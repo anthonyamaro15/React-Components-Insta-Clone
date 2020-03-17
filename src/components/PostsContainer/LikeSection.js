@@ -5,7 +5,6 @@ import React from "react";
 import { FaRegHeart, FaRegComment } from "react-icons/fa";
 
 const LikeSection = ({ likes, updateLikes }) => {
-  //   console.log(props);
   return (
     <div>
       <div className="like-section" key="likes-icons-container">

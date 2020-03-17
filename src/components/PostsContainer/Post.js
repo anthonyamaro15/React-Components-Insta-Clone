@@ -7,33 +7,32 @@ import PostHeader from "./PostHeader";
 import "./Posts.css";
 
 // pass props in this file to
-const Post = props => {
+const Post = ({ post }) => {
   // set up state for the likes
-  const { post } = props;
   const [likes, setLikes] = useState(post.likes);
-  //   console.log(post);
+  const [arrComment, setArrComment] = useState(post.comments);
 
   const updateLikes = () => {
     setLikes(likes + 1);
   };
 
+  // this function creates new comments and add them to the data.
+  const updateWComments = comm => {
+    const newArr = [...arrComment, comm];
+    setArrComment(newArr);
+  };
+
   return (
     <div className="post-border">
-      <PostHeader
-        username={props.post.username}
-        thumbnailUrl={props.post.thumbnailUrl}
-      />
+      <PostHeader username={post.username} thumbnailUrl={post.thumbnailUrl} />
       <div className="post-image-wrapper">
-        <img
-          alt="post thumbnail"
-          className="post-image"
-          src={props.post.imageUrl}
-        />
+        <img alt="post thumbnail" className="post-image" src={post.imageUrl} />
       </div>
       <LikeSection likes={likes} updateLikes={updateLikes} />
       <CommentSection
-        postId={props.post.imageUrl}
-        comments={props.post.comments}
+        postId={post.imageUrl}
+        comments={arrComment}
+        updateWComments={updateWComments}
       />
     </div>
   );
