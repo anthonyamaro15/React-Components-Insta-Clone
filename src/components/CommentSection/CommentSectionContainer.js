@@ -10,6 +10,7 @@ const CommentSection = ({ comments, updateWComments }) => {
 
   const submitComment = e => {
     e.preventDefault();
+    setComment("");
 
     const newValues = {
       username: "anonymous",
